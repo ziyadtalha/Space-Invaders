@@ -39,7 +39,7 @@ public:
         level[c1][c2] = 4;
 
         //resetting the counter
-        moveDownCounter = 500;
+        moveDownCounter = 400;
     }
 
     void decrementCounter() {
@@ -99,7 +99,7 @@ Enemy::Enemy()
     y = 0;
     c1 = 0;
     c2 = 0;
-    moveDownCounter = 500;
+    moveDownCounter = 400;
     dead = false;
 }
 
@@ -109,7 +109,7 @@ Enemy::Enemy(int x1, int y1, int coord1, int coord2)
     y = y1;
     c1 = coord1;
     c2 = coord2;
-    moveDownCounter = 500;
+    moveDownCounter = 400;
     dead = false;
 }
 
@@ -205,10 +205,7 @@ public:
                 }
             }
         }
-        else
-        {
-            return false;
-        }
+        return false;
     }
 
 private:
@@ -387,7 +384,7 @@ public:
         }
     }
 
-    void checkBulletCollisions(int** level, int& score) {
+    void checkBulletCollisions(int& score) {
         for (int i = 0; i < bullets->size(); i++)
         {
             //if bullet collided with border
@@ -607,7 +604,7 @@ public:
                 }
             }
 
-            checkBulletCollisions(level, score);
+            checkBulletCollisions(score);
             displayBoard();
             //Sleep(100);
 
@@ -620,7 +617,7 @@ public:
             }
 
             //if winning condition reached
-            if (score == scoreReq)
+            if (score >= scoreReq)
             {
                 flag1 = true;
                 ClearScreen();
